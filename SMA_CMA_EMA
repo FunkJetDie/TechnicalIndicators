@@ -1,0 +1,23 @@
+import pandas as pd
+
+import matplotlib.pyplot as plt
+plt.style.use('default')
+
+
+data = pd.read_csv("AAPL.csv", index_col="Date")
+
+dataSMA = data.Close.rolling(30).mean()
+dataCMA = data.Close.expanding().mean()
+dataEMA = data.Close.ewm(span=30).mean()
+
+
+dataClose = dataClose.to_frame(name="Close")
+dataSMA = dataSMA.to_frame(name="SMA")
+dataCMA = dataCMA.to_frame(name="CMA")
+dataEMA = dataEMA.to_frame(name="EMA")
+
+data2 = data.assign(DATASMA=dataSMA)
+data2 = dataClose.assign(DataSMA=dataSMA, DataCMA=dataCMA, DataEMA=dataEMA)
+
+data2.plot()
+plt.show()
