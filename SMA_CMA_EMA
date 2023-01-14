@@ -4,13 +4,15 @@ import matplotlib.pyplot as plt
 plt.style.use('default')
 
 
+#import data in csv format
 data = pd.read_csv("AAPL.csv", index_col="Date")
 
+#Calculate the SMA, CMA and EMA of the closing price
 dataSMA = data.Close.rolling(30).mean()
 dataCMA = data.Close.expanding().mean()
 dataEMA = data.Close.ewm(span=30).mean()
 
-
+#Convert series to dataframes
 dataClose = dataClose.to_frame(name="Close")
 dataSMA = dataSMA.to_frame(name="SMA")
 dataCMA = dataCMA.to_frame(name="CMA")
