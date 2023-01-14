@@ -18,8 +18,10 @@ dataSMA = dataSMA.to_frame(name="SMA")
 dataCMA = dataCMA.to_frame(name="CMA")
 dataEMA = dataEMA.to_frame(name="EMA")
 
+#Adds columns to a dataframe
 data2 = data.assign(DATASMA=dataSMA)
 data2 = dataClose.assign(DataSMA=dataSMA, DataCMA=dataCMA, DataEMA=dataEMA)
 
+#plot the data
 data2.plot()
 plt.show()
