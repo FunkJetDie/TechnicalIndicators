@@ -1,0 +1,7 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("AAPL.csv", index_col="Date")
+
+plt.boxplot(df.Close)
+plt.show()
