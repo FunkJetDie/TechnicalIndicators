@@ -5,34 +5,8 @@ import matplotlib.pyplot as plt
 document = "AAPL.csv"
 df = pd.read_csv(document, index_col="Date")
 
-dfMean = df.Close.mean()
-dfMedian = df.Close.median()
-dfMin = min(df.Close)
-dfMax = max(df.Close)
-
-dfQ1 = np.quantile(df, [0.25])
-dfQ2 = np.quantile(df, [0.50])
-dfQ3 = np.quantile(df, [0.75])
-
-dfIQR = dfQ3 - dfQ1
-dfSTD = df.Close.std()
-dfVAR = df.Close.var()
-
 print("Boxplot of: %s" % document )
 plt.boxplot(df.Close)
 plt.show()
 
-print("Location \n" ,
-      "Mean: %d \n" % dfMean,
-      "Median: %d \n" % dfMedian,
-      "Minimum: %d \n" % dfMin,
-      "Maximum: %d \n" % dfMax,
-
-      "1st Quantile: %d \n" % dfQ1,
-      "2nd Quantile: %d \n" % dfQ2,
-      "3rd Quantile: %d \n \n" % dfQ3,
-
-      "Spread \n",
-      "Interquartile Range: %d \n" % dfIQR,
-      "Standard Deviation: %d \n" % dfSTD,
-      "Variance: %d \n" % dfVAR)
+df.Close.describe(exclude='category')
