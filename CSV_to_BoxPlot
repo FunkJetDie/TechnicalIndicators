@@ -9,4 +9,4 @@ print("Boxplot of: %s" % document )
 plt.boxplot(df.Close)
 plt.show()
 
-df.Close.describe(exclude='category')
+df.Close.describe()
